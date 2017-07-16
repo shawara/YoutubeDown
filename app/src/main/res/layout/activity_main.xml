@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/url_insta_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Instagram Image URL"
+                android:textColor="#fff" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/download_insta_imageView"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:src="@drawable/down"
+
+            />
+    </LinearLayout>
+</RelativeLayout>
