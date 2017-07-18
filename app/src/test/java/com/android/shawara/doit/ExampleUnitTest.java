@@ -1,5 +1,7 @@
 package com.android.shawara.doit;
 
+import com.android.shawara.doit.utils.ImageScrapper;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

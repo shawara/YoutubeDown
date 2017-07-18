@@ -1,8 +1,9 @@
-package com.android.shawara.doit;
+package com.android.shawara.doit.ui;
 
 import android.Manifest;
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -21,6 +22,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.shawara.doit.services.CopyInstaUrl;
+import com.android.shawara.doit.utils.ImageScrapper;
+import com.android.shawara.doit.R;
+
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        startService(new Intent(this, CopyInstaUrl.class));
+
         mDownloadInstaImageView = (ImageView) findViewById(R.id.download_insta_imageView);
         mUrlInstaEditText = (EditText) findViewById(R.id.url_insta_editText);
         isStoragePermissionGranted();
@@ -73,20 +80,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (isStoragePermissionGranted()) {
-
-                DownloadUrl(downloadUrl);
+                ImageScrapper.DownloadImage(getBaseContext(), downloadUrl);
             }
         }
-    }
-
-    private void DownloadUrl(String downloadUrl) {
-        DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
-        request.setDescription("Social Downloader").setTitle("Instagram image")
-                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,
-                        "IMG_" + System.currentTimeMillis() / 1000 + ".jpg");
-
-        downloadManager.enqueue(request);
     }
 
 
