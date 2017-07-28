@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "39135097069",
+    "firebase_url": "https://social-downloader.firebaseio.com",
+    "project_id": "social-downloader",
+    "storage_bucket": "social-downloader.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39135097069:android:45b72b6538dba978",
+        "android_client_info": {
+          "package_name": "com.android.shawara.socialdownloader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39135097069-5unibsum09orgde8gba3gga3arvas3t9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpjOpPmQCtm5VXu8SN8jlLRE4SYPCwOdo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

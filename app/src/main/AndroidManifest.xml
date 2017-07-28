@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.shawara.doit">
+    package="com.android.shawara.socialdownloader">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,8 +12,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
+        android:theme="@style/YoutubeTheme">
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".ui.activity.MainActivity">
+
+        </activity>
+
+        <activity
+            android:name=".ui.activity.YoutubeActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +29,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.CopyInstaUrl" />
+        <service android:name="com.android.shawara.socialdownloader.services.CopyInstaUrl" />
     </application>
 
 </manifest>

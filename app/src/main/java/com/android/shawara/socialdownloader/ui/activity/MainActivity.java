@@ -1,30 +1,24 @@
-package com.android.shawara.doit.ui;
+package com.android.shawara.socialdownloader.ui.activity;
 
 import android.Manifest;
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.shawara.doit.services.CopyInstaUrl;
-import com.android.shawara.doit.utils.ImageScrapper;
-import com.android.shawara.doit.R;
+import com.android.shawara.socialdownloader.services.CopyInstaUrl;
+import com.android.shawara.socialdownloader.utils.Animations;
+import com.android.shawara.socialdownloader.utils.Scrapper;
+import com.android.shawara.socialdownloader.R;
 
 import java.io.IOException;
 
@@ -43,13 +37,10 @@ public class MainActivity extends AppCompatActivity {
         mDownloadInstaImageView = (ImageView) findViewById(R.id.download_insta_imageView);
         mUrlInstaEditText = (EditText) findViewById(R.id.url_insta_editText);
         isStoragePermissionGranted();
-        mDownloadInstaImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rotateImageAnimation(mDownloadInstaImageView);
-                mDownloadInstaImageView.setEnabled(false);
-                new InstaDownloader().execute(mUrlInstaEditText.getText().toString());
-            }
+        mDownloadInstaImageView.setOnClickListener(view -> {
+            Animations.rotateImageAnimation(mDownloadInstaImageView);
+            mDownloadInstaImageView.setEnabled(false);
+            new InstaDownloader().execute(mUrlInstaEditText.getText().toString());
         });
 
     }
@@ -61,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             String dUrl = "";
             try {
-                dUrl = ImageScrapper.getDownloadUrl(params[0]);
+                dUrl = Scrapper.getDownloadUrl(params[0]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -80,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (isStoragePermissionGranted()) {
-                ImageScrapper.DownloadImage(getBaseContext(), downloadUrl);
+                Scrapper.DownloadImage(getBaseContext(), downloadUrl);
             }
         }
     }
@@ -114,16 +105,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void rotateImageAnimation(ImageView imageView) {
-
-        RotateAnimation anim = new RotateAnimation(0.0f, 360.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-
-        //Setup anim with desired properties
-        anim.setInterpolator(new LinearInterpolator());
-        anim.setRepeatCount(Animation.INFINITE); //Repeat animation indefinitely
-        anim.setDuration(1000); //Put desired duration per anim cycle here, in milliseconds
-
-        //Start animation
-        imageView.startAnimation(anim);
-    }
 }

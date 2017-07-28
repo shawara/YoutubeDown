@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <!-- Base application theme. -->
+    <style name="YoutubeTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/youtubePrimary</item>
+        <item name="colorPrimaryDark">@color/youtubePrimaryDark</item>
+        <item name="colorAccent">@color/youtubeAccent</item>
+    </style>
+
 </resources>

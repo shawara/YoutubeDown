@@ -1,4 +1,4 @@
-package com.android.shawara.doit.services;
+package com.android.shawara.socialdownloader.services;
 
 import android.app.Service;
 import android.content.ClipData;
@@ -10,7 +10,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.android.shawara.doit.utils.ImageScrapper;
+import com.android.shawara.socialdownloader.utils.Scrapper;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -51,9 +51,9 @@ public class CopyInstaUrl extends Service {
                         public void run() {
 
                             try {
-                                String url = ImageScrapper.getDownloadUrl(text);
+                                String url = Scrapper.getDownloadUrl(text);
                                 if (isPermissionGranted() && !url.isEmpty()) {
-                                    ImageScrapper.DownloadImage(getBaseContext(), url);
+                                    Scrapper.DownloadImage(getBaseContext(), url);
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();

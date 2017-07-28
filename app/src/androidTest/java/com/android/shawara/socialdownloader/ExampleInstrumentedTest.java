@@ -1,4 +1,4 @@
-package com.android.shawara.doit;
+package com.android.shawara.socialdownloader;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

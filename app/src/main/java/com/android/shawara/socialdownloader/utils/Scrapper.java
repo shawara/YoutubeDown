@@ -1,21 +1,28 @@
-package com.android.shawara.doit.utils;
+package com.android.shawara.socialdownloader.utils;
 
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.Observable;
 
 /**
  * Created by shawara on 7/15/2017.
  */
 
-public class ImageScrapper {
+public class Scrapper {
+    private final static String TAG = "Scrapper";
 
     public static String getDownloadUrl(String url) throws IOException {
         Document doc = Jsoup.connect("http://www.dinsta.com/photos/")
@@ -39,5 +46,19 @@ public class ImageScrapper {
 
         downloadManager.enqueue(request);
     }
+
+
+    public static List<String> getYouTubePlayListIds(String playListId) throws IOException {
+        List<String> urls = new ArrayList<>();
+
+        Document doc = Jsoup.connect("https://www.youtube.com/playlist?list=" + playListId).userAgent("Mozilla").get();
+        List<Element> elements = doc.getElementsByClass("pl-video");
+        for (Element ele : elements) {
+            urls.add(ele.attr("data-video-id"));
+        }
+        Log.d(TAG, "getYouTubePlayListIds: "+urls.size());
+        return urls;
+    }
+
 
 }

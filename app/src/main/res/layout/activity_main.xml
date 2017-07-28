@@ -6,6 +6,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/background"
         android:scaleType="centerCrop"
         android:src="@drawable/background" />
 
@@ -26,7 +27,8 @@
                 android:id="@+id/url_insta_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Instagram Image URL"
+                android:hint="@string/instagram_image_url"
+                android:inputType="textUri"
                 android:textColor="#fff" />
         </android.support.design.widget.TextInputLayout>
 
@@ -34,8 +36,7 @@
             android:id="@+id/download_insta_imageView"
             android:layout_width="52dp"
             android:layout_height="52dp"
-            android:src="@drawable/down"
-
-            />
+            android:contentDescription="@string/download"
+            android:src="@drawable/down" />
     </LinearLayout>
 </RelativeLayout>
