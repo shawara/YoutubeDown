@@ -9,13 +9,7 @@ android app download youtube videos and playlists with different qualities and f
  <img src="screenshots/demo.gif" height="400" alt="demo gif"/>
 
 ## Libraries
-- Rxandroid2
-- Rxjava2
-- Retrofit2
-- Gson
-- Picasso
-
-- HttpOk3
+- Rxandroid2- Rxjava2- Retrofit2- Gson- Picasso- OkHttp3
 
 
 
