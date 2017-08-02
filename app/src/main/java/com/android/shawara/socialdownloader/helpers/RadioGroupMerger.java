@@ -26,6 +26,9 @@ public class RadioGroupMerger {
     }
 
     private void initListeners() {
+        for (RadioGroup group : mGroups)
+            group.clearCheck();
+
         for (RadioGroup group : mGroups) {
             group.setOnCheckedChangeListener((radioGroup, i) -> {
                         if (i != -1 && i != CURRENT_UNCHECKED) {

@@ -1,4 +1,4 @@
-package com.android.shawara.socialdownloader.ui.adapter;
+package com.android.shawara.socialdownloader.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -44,9 +44,9 @@ public class DownloadHolder extends RecyclerView.ViewHolder implements View.OnCl
         Picasso.with(context).load(item.getThumbnail_url()).into(mThumbnail);
         mTitle.setText(mItem.getTitle());
 
-        int progress =item.getTotalSize()>0?(int)( (100 * item.getCurrentSize()) / item.getTotalSize()):0;
+        int progress =(item.getTotalSize()+item.getResumeSize())>0?(int)( (100 * (item.getCurrentSize()+item.getResumeSize())) / (item.getTotalSize()+item.getResumeSize())):0;
         mProgressbar.setProgress(progress);
-        mState.setText(item.getState());
+        mState.setText(YoutubeItem.states[item.getState()]);
 
     }
 

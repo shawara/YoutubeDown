@@ -5,10 +5,30 @@ package com.android.shawara.socialdownloader.model;
  */
 
 public class YoutubeItem {
-    //vdfDSA23@F!@FSadsa
+    public final static int DOWNLOADED = 0, DOWNLOADING = 1, IN_QUEUE = 2, STOPPED = 3, READY = 4;
+    public static final String[] states = {"Downloaded", "Downloading...", "in Queue", "Stopped", "Ready"};
+
     private long totalSize;
     private long currentSize;
-    private String state;
+    private int state = 4;
+    private long resumeSize;
+    private int selectedQ;
+
+    public int getSelectedQ() {
+        return selectedQ;
+    }
+
+    public void setSelectedQ(int selectedQ) {
+        this.selectedQ = selectedQ;
+    }
+
+    public long getResumeSize() {
+        return resumeSize;
+    }
+
+    public void setResumeSize(long resumeSize) {
+        this.resumeSize = resumeSize;
+    }
 
     public long getTotalSize() {
         return totalSize;
@@ -26,11 +46,11 @@ public class YoutubeItem {
         this.currentSize = curentSize;
     }
 
-    public String getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(int state) {
         this.state = state;
     }
 

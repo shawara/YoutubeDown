@@ -1,3 +1,55 @@
-# DoIt
-Screenshots
--------------  <img src="screenshots/src1.jpeg" height="400" alt="Screenshot"/> <img src="screenshots/src2.jpeg" height="400" alt="Screenshot"/> <img src="screenshots/src3.jpeg" height="400" alt="Screenshot"/>
+# YoutubeDown
+
+android app download youtube videos and playlists with different qualities and formats.
+
+
+
+## Demo
+
+ <img src="screenshots/demo.gif" height="400" alt="demo gif"/>
+
+## Libraries
+- Rxandroid2
+- Rxjava2
+- Retrofit2
+- Gson
+- Picasso 
+
+- HttpOk3
+
+
+
+
+
+## License
+
+
+
+* [Apache Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+
+
+```
+
+Copyright 2016 mahmoud shawara
+
+
+
+Licensed under the Apache License, Version 2.0 (the "License");
+
+you may not use this file except in compliance with the License.
+
+You may obtain a copy of the License at
+
+ 
+http://www.apache.org/licenses/LICENSE-2.0
+
+
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+```

@@ -38,6 +38,8 @@ public final class Utils {
             return ".240.3gp";
         } else if (Q == 128) {
             return ".128.m4a";
+        } else if (Q == 64) {
+            return ".64.m4a";
         } else return "";
     }
 }

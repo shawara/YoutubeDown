@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Social Downloader</string>
+    <string name="app_name">YoutubeDown</string>
     <string name="download">Download</string>
     <string name="background">background</string>
     <string name="instagram_image_url">Instagram Image URL</string>

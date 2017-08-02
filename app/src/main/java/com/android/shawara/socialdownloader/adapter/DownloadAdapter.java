@@ -1,5 +1,6 @@
-package com.android.shawara.socialdownloader.ui.adapter;
+package com.android.shawara.socialdownloader.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -70,9 +71,11 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadHolder> implem
 
     @Override
     public void onItemDismiss(int position) {
+        YoutubeItem item=mList.get(position);
         mList.remove(position);
         notifyItemRemoved(position);
         if (itemDismissListener != null)
-            itemDismissListener.onDismiss();
+            itemDismissListener.onDismiss(item);
+
     }
 }

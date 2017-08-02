@@ -64,17 +64,16 @@ public class ProgressResponseBody extends ResponseBody {
 
 
     public static class ProgressListener {
-        private String mTag;
+        private YoutubeItem mItem;
         private YoutubeActivity mActivity;
 
-        public ProgressListener(YoutubeActivity activity, String tag) {
+        public ProgressListener(YoutubeActivity activity, YoutubeItem tagItem) {
             mActivity = activity;
-            mTag = tag;
+            mItem = tagItem;
         }
 
         void update(long bytesRead, long contentLength, boolean done) {
-            Log.d("hhhh", "update: " + mTag + " " + bytesRead);
-            mActivity.updateYoutubeItem(mTag, bytesRead, contentLength, done);
+            mActivity.updateYoutubeItem(mItem.getTitle(), bytesRead, contentLength, done);
         }
     }
 }

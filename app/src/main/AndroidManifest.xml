@@ -13,11 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/YoutubeTheme">
-        <activity
-            android:theme="@style/AppTheme"
-            android:name=".ui.activity.MainActivity">
-
-        </activity>
 
         <activity
             android:name=".ui.activity.YoutubeActivity"
@@ -29,7 +24,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.android.shawara.socialdownloader.services.CopyInstaUrl" />
+        <service android:name="com.android.shawara.socialdownloader.services.UrlCopiedService" />
     </application>
 
 </manifest>
