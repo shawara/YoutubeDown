@@ -15,6 +15,7 @@ android app download youtube videos and playlists with different qualities and f
 - Gson
 - Picasso
 - OkHttp3
+- Jsoup
 
 
 
