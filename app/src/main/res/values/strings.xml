@@ -3,5 +3,5 @@
     <string name="download">Download</string>
     <string name="background">background</string>
     <string name="instagram_image_url">Instagram Image URL</string>
-    <string name="youtube_video_url">Youtube video url</string>
+    <string name="youtube_video_url">Youtube video or playlist url</string>
 </resources>

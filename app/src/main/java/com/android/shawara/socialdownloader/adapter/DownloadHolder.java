@@ -1,15 +1,21 @@
 package com.android.shawara.socialdownloader.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.shawara.socialdownloader.R;
 import com.android.shawara.socialdownloader.model.YoutubeItem;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 /**
  * Created by shawara on 7/25/2017.
@@ -44,8 +50,7 @@ public class DownloadHolder extends RecyclerView.ViewHolder implements View.OnCl
         Picasso.with(context).load(item.getThumbnail_url()).into(mThumbnail);
         mTitle.setText(mItem.getTitle());
 
-        int progress =(item.getTotalSize()+item.getResumeSize())>0?(int)( (100 * (item.getCurrentSize()+item.getResumeSize())) / (item.getTotalSize()+item.getResumeSize())):0;
-        mProgressbar.setProgress(progress);
+        mProgressbar.setProgress(mItem.getProgress());
         mState.setText(YoutubeItem.states[item.getState()]);
 
     }
@@ -53,6 +58,14 @@ public class DownloadHolder extends RecyclerView.ViewHolder implements View.OnCl
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.item_playStop_imageview) {
+            if (mItem.getProgress() > 0) {
+                Intent intent = new Intent();
+                intent.setAction(android.content.Intent.ACTION_VIEW);
+                File file = new File(mItem.getFilePath());
+                intent.setDataAndType(Uri.fromFile(file), "audio/*");
+                mContext.startActivity(Intent.createChooser(intent,"Play Download"));
+            } else
+                Toast.makeText(mContext, "the item download progress is 0", Toast.LENGTH_SHORT).show();
 
         }
 

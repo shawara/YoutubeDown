@@ -8,6 +8,7 @@ public class YoutubeItem {
     public final static int DOWNLOADED = 0, DOWNLOADING = 1, IN_QUEUE = 2, STOPPED = 3, READY = 4;
     public static final String[] states = {"Downloaded", "Downloading...", "in Queue", "Stopped", "Ready"};
 
+    private String mFilePath;
     private long totalSize;
     private long currentSize;
     private int state = 4;
@@ -116,5 +117,17 @@ public class YoutubeItem {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getFilePath() {
+        return mFilePath;
+    }
+
+    public void setFilePath(String filePath) {
+        mFilePath = filePath;
+    }
+
+    public int getProgress() {
+        return (totalSize + resumeSize) > 0 ? (int) ((100 * (currentSize + resumeSize)) / (totalSize + resumeSize)) : 0;
     }
 }

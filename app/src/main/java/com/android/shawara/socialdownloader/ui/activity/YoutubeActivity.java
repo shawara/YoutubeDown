@@ -1,6 +1,7 @@
 package com.android.shawara.socialdownloader.ui.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -31,6 +32,7 @@ import com.android.shawara.socialdownloader.helpers.RadioGroupMerger;
 import com.android.shawara.socialdownloader.helpers.SimpleItemTouchHelperCallback;
 import com.android.shawara.socialdownloader.model.YoutubeItem;
 import com.android.shawara.socialdownloader.adapter.DownloadAdapter;
+import com.android.shawara.socialdownloader.services.UrlCopiedService;
 import com.android.shawara.socialdownloader.utils.Animations;
 import com.android.shawara.socialdownloader.utils.Constants;
 import com.android.shawara.socialdownloader.utils.Scrapper;
@@ -84,6 +86,7 @@ public class YoutubeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube);
 
+        //startService(new Intent(this, UrlCopiedService.class));
         mYoutubeService = Utils.createRetrofitService(API.class, API.BASE_URL);
 
         initUI();
@@ -160,8 +163,8 @@ public class YoutubeActivity extends AppCompatActivity {
                         } else {
                             Log.d(TAG, "initUI: Current Quality" + id);
 
-                            for (YoutubeItem item:mYoutubeItems)
-                            item.setState(YoutubeItem.IN_QUEUE);
+                            for (YoutubeItem item : mYoutubeItems)
+                                item.setState(YoutubeItem.IN_QUEUE);
                             mAdapter.notifyDataSetChanged();
 
                             Observable.just(mYoutubeItems)
@@ -310,9 +313,12 @@ public class YoutubeActivity extends AppCompatActivity {
         int quality = item.getSelectedQ();
         String fullname = Utils.getValidFileName(fileName) + Utils.getTypeOfQ(quality);
 
+
         File downloadedFile = new File(Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                 Utils.getValidFileName(fullname));
+
+        item.setFilePath(downloadedFile.getAbsolutePath());
         return downloadedFile;
     }
 
