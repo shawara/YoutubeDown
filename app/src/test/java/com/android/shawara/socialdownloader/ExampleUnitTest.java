@@ -72,11 +72,20 @@ public class ExampleUnitTest {
         System.out.println(pat.matcher(url2).matches());
         System.out.println(pat.matcher(url3).matches());
 
-        Matcher m=pat.matcher(url1);
+        Matcher m = pat.matcher(url1);
 
         System.out.println(m.find());
         System.out.println(m.group(0));
 
+    }
+
+
+    @Test
+    public void fbDown() throws Exception {
+        List<String> li = Scrapper.getFBDownloadURL("https://www.facebook.com/abdulah.algharieep/videos/457083857743474");
+        for (String url : li) {
+            System.out.println(url);
+        }
     }
 
 }

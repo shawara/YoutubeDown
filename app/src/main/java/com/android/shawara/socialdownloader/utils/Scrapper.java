@@ -56,7 +56,22 @@ public class Scrapper {
         for (Element ele : elements) {
             urls.add(ele.attr("data-video-id"));
         }
-        Log.d(TAG, "getYouTubePlayListIds: "+urls.size());
+        Log.d(TAG, "getYouTubePlayListIds: " + urls.size());
+        return urls;
+    }
+
+    public static List<String> getFBDownloadURL(String url) throws IOException {
+        List<String> urls = new ArrayList<>();
+
+        Document doc = Jsoup.connect("http://www.fbdown.net/down.php")
+                .data("URLz", url)
+                .userAgent("Mozilla")
+                .post();
+
+        List<Element> elements = doc.getElementById("result").getElementsByTag("a");
+        for (Element ele : elements) {
+            urls.add(ele.attr("href"));
+        }
         return urls;
     }
 

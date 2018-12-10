@@ -300,7 +300,7 @@ public class YoutubeActivity extends AppCompatActivity {
 
         mHandler.post(() -> {
             int itemIdx = getItemIdx(tag);
-            Log.d(TAG, "updateYoutubeItem: " + tag + " " + itemIdx);
+            //Log.d(TAG, "updateYoutubeItem: " + tag + " " + itemIdx);
             mYoutubeItems.get(itemIdx).setCurrentSize(bytesRead);
             mYoutubeItems.get(itemIdx).setTotalSize(contentLength);
             mYoutubeItems.get(itemIdx).setState(done ? YoutubeItem.DOWNLOADED : YoutubeItem.DOWNLOADING);
